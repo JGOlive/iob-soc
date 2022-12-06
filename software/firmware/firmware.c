@@ -2,6 +2,7 @@
 #include "periphs.h"
 #include "iob-uart.h"
 #include "printf.h"
+#include "iob-gpio.h"
 
 #define ITERATIONS 20 
 #define MAX_STR_SIZE 200
@@ -89,6 +90,11 @@ int main()
   //init uart
   uart_init(UART_BASE,FREQ/BAUD);
 
+  //init gpio
+  gpio_init(GPIO_BASE);
+
+  gpio_set_output_enable(7);
+
   //test puts
   uart_puts("\n\n\nHello world!\n\n\n");
 
@@ -98,6 +104,10 @@ int main()
   generate_string(numbers_int,send_string, ITERATIONS); 
    
   printf("%s\n", send_string);
+
+  //gpio stuff
+
+  gpio_set(2);
 
   //test file send
   char *sendfile = malloc(1000);

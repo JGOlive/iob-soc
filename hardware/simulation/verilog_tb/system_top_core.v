@@ -91,6 +91,9 @@ module system_top
 `endif
 
    
+   //SUBSTITUIR inst_tb.vh
+   assign gpio_input = 1233;
+
    //finish simulation on trap
    /* always @(posedge trap) begin
     #10 $display("Found CPU trap condition");
