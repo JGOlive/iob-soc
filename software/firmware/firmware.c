@@ -85,7 +85,7 @@ void generate_string(int *numbers, char* total_string, int iter){
 
 int main()
 {
-
+  uint32_t gpio_input;
   int numbers_int[ITERATIONS];
   //init uart
   uart_init(UART_BASE,FREQ/BAUD);
@@ -106,8 +106,10 @@ int main()
   printf("%s\n", send_string);
 
   //gpio stuff
-
+  gpio_input = gpio_get();
   gpio_set(2);
+
+  printf("GPIO message: %d\n",gpio_input);
 
   //test file send
   char *sendfile = malloc(1000);
