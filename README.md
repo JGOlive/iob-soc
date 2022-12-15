@@ -1,4 +1,4 @@
-# THIS REPOSITORY HAS THE PROJECT
+# This repository has the project
 
 Transmits audio wave thorugh pwm.
 
