@@ -1,3 +1,10 @@
+# THIS REPOSITORY HAS THE PROJECT
+
+Transmits audio wave thorugh pwm.
+Switches control the frequency emitted
+Display to show the frequency of the sine wave.
+
+
 # IOb-SoC
 
 IOb-SoC is a System-on-Chip (SoC) template comprising an open-source RISC-V
