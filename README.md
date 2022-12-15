@@ -1,7 +1,9 @@
 # THIS REPOSITORY HAS THE PROJECT
 
 Transmits audio wave thorugh pwm.
+
 Switches control the frequency emitted
+
 Display to show the frequency of the sine wave.
 
 
