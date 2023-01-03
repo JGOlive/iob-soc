@@ -87,6 +87,11 @@ int main()
 {
   uint32_t gpio_input;
   int numbers_int[ITERATIONS];
+  // proj var
+  uint32_t freq_ad = 32768;
+  uint32_t freq_selectors, p_freq_selectors;
+  uint32_t pwm_t;
+
   //init uart
   uart_init(UART_BASE,FREQ/BAUD);
 
@@ -104,6 +109,18 @@ int main()
   generate_string(numbers_int,send_string, ITERATIONS); 
    
   printf("%s\n", send_string);
+
+  // project stuff
+  //
+
+  freq_selectors = freq_selectors && 0x0000FFFF;
+
+  if(freq_selectors != p_freq_selectors){
+    pwm_t = freq_ad/freq_selectors;
+    
+
+    p_freq_selectors = freq_selectors;
+  }
 
   //gpio stuff
   gpio_input = gpio_get();
