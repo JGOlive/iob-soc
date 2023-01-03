@@ -19,9 +19,3 @@
 [submodule "submodules/GPIO"]
 	path = submodules/GPIO
 	url = git@github.com:IObundle/iob-gpio.git
-[submodule "iob-timer"]
-	path = iob-timer
-	url = git@github.com:JGOlive/iob-timer.git
-[submodule "submodules/iob-timer"]
-	path = submodules/iob-timer
-	url = git@github.com:JGOlive/iob-timer.git
