@@ -3,6 +3,7 @@
 #include "iob-uart.h"
 #include "printf.h"
 #include "iob-gpio.h"
+#include "iob-timer.h"
 
 #define ITERATIONS 20 
 #define MAX_STR_SIZE 200
@@ -82,6 +83,8 @@ void generate_string(int *numbers, char* total_string, int iter){
     string_copy(total_string,test_string);
     return;
 }
+
+
 
 int main()
 {
