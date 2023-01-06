@@ -22,3 +22,6 @@
 [submodule "submodules/TIMER"]
 	path = submodules/TIMER
 	url = git@github.com:JGOlive/iob-timer.git
+[submodule "submodules/PWM"]
+	path = submodules/PWM
+	url = git@github.com:JGOlive/iob-pwm-generator.git

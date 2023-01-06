@@ -5,25 +5,25 @@
 #include "printf.h"
 #include "iob-timer.h"
 
-unsigned int pwm_timepoint_array[10] =  {50, 79, 98, 98, 79, 5, 21, 2, 2, 21};
+unsigned int pwm_timepoint_array[4] =  {50, 100, 50, 0};
 unsigned int pwn_ton[10];
-unsigned int freq = 100, freq_buffer, period, t_total;
-int numero_de_pontos_t_on = 10, i, k, l;
-
+unsigned int freq = 1000, freq_buffer, period, t_total;
+int numero_de_pontos_t_on = 4 , i;
+unsigned long long k, l;
 void pwm_gen()
 {
-  i = 1;
+  i = 0;
   while(i < numero_de_pontos_t_on)
     {
-      timer_reset();
+      //timer_reset();
       gpio_set(1);
-      while(timer_time_us() <= pwn_ton[i]);
-      k = timer_time_us(); 
-      printf("Ton[%d]: %d -> %d\n", i, pwn_ton[i], k);
+      //while(timer_get_count() <= pwn_ton[i]);
+      //k = timer_get_count(); 
+      //printf("Ton[%d]: %d -> %lld timercount\n", i, pwn_ton[i], k);
       gpio_set(0);
-      while(timer_time_us() <= t_total);
-      l = timer_time_us();
-      printf("Toff[%d]: %d -> %d\n", i, (t_total - pwn_ton[i]), (l-k));
+      //while(timer_get_count() <= t_total);
+      //l = timer_get_count();
+      //printf("Toff[%d]: %d -> %lld timercount\n", i, (t_total - pwn_ton[i]), (l-k));
       i++;
     }
   return;
