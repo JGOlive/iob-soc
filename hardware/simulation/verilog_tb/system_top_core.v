@@ -105,7 +105,7 @@ module system_top
     wire [`SRAM_ADDR_W-1:0] sram_daddr = uut.int_mem0.int_sram.d_addr;
     wire sram_dwstrb = |uut.int_mem0.int_sram.d_wstrb & uut.int_mem0.int_sram.d_valid;
     wire sram_drdstrb = !uut.int_mem0.int_sram.d_wstrb & uut.int_mem0.int_sram.d_valid;
-    wire [`DATA_W-1:0] sram_dwdata = uut.int_mem0.int_sram.d_wdata;
+    wire [`DATA_W-1:0] sram_dwdata = uut.int_mem0.sint_sram.d_wdata;
 
 
     wire sram_iwstrb = |uut.int_mem0.int_sram.i_wstrb & uut.int_mem0.int_sram.i_valid;
