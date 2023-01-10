@@ -92,7 +92,6 @@ module system_top
 
    
    //SUBSTITUIR inst_tb.vh
-   assign gpio_input = 24;
 
    //finish simulation on trap
    /* always @(posedge trap) begin

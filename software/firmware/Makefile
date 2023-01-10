@@ -12,11 +12,8 @@ endif
 #uart
 include $(UART_DIR)/software/embedded/embedded.mk
 
-#gpio
-include $(GPIO_DIR)/software/embedded/embedded.mk
-
-#timer
-include $(TIMER_DIR)/software/embedded/embedded.mk
+#pwm
+include $(PWM_DIR)/software/embedded/embedded.mk
 
 #HEADERS
 HDR+=periphs.h
