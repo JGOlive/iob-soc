@@ -2,6 +2,7 @@
 #include "periphs.h"
 #include "iob-uart.h"
 #include "printf.h"
+#include "iob-pwm.h"
 
 char *send_string = "Sending this string as a file to console.\n"
                     "The file is then requested back from console.\n"
@@ -47,29 +48,7 @@ int main()
   //test puts
   uart_puts("\n\n\nHello world!\n\n\n");
 
-  //test printf with floats 
-  printf("Value of Pi = %f\n\n", 3.1415);
-
-  //test file send
-  char *sendfile = malloc(1000);
-  int send_file_size = 0;
-  send_file_size = string_copy(sendfile, send_string);
-  uart_sendfile("Sendfile.txt", send_file_size, sendfile);
-
-  //test file receive
-  char *recvfile = malloc(10000);
-  int file_size = 0;
-  file_size = uart_recvfile("Sendfile.txt", recvfile);
-
-  //compare files
-  if (compare_str(sendfile, recvfile, send_file_size)) {
-      printf("FAILURE: Send and received file differ!\n");
-  } else {
-      printf("SUCCESS: Send and received file match!\n");
-  }
-
-  free(sendfile);
-  free(recvfile);
+  pwm_set_period(128);  
 
   uart_finish();
 }
