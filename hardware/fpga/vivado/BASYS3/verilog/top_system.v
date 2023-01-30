@@ -5,8 +5,14 @@ module top_system(
 	          input         clk,
 	          input         reset,
 
-	          //uart
+	          //pwm
 	          output 	pwm_output,
+	          //gpio
+   		  input [15:0] gpio_sw,
+   		  output [15:0] gpio_led,
+   		  output [7:0] gpio_sseg_ca,
+   		  output [3:0] gpio_sseg_an,
+	          //uart
 	          output        uart_txd,
 	          input         uart_rxd
 		  );

@@ -7,7 +7,14 @@
 
 module system_top 
   (
+   //pwm
    output 				pwm_output,
+   //gpio
+   input [15:0] 			gpio_sw,
+   output [15:0] 			gpio_led,
+   output [7:0] 			gpio_sseg_ca,
+   output [3:0] 			gpio_sseg_an,
+   
    output                             trap,
    //tester uart
    input                              uart_valid,
@@ -36,7 +43,6 @@ module system_top
       $dumpfile("system.vcd");
       $dumpvars();
 `endif
-
    end
    
    //
@@ -91,7 +97,17 @@ module system_top
       );   
 `endif
 
-   
+reg [15:0] gpio_sw_test = 0;
+assign gpio_sw = gpio_sw_test;
+
+initial begin 
+
+gpio_sw_test = 0;
+
+#100 gpio_sw_ test = 1234;
+
+end
+ 
    //SUBSTITUIR inst_tb.vh
 
    //finish simulation on trap

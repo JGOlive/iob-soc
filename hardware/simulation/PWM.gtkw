@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Mon Jan 30 13:20:28 2023
+[*] Mon Jan 30 18:19:10 2023
 [*]
 [dumpfile] "/home/student/Rep_Projeto/iob-soc/hardware/simulation/icarus/system.vcd"
-[dumpfile_mtime] "Mon Jan 30 13:19:39 2023"
-[dumpfile_size] 266746763
+[dumpfile_mtime] "Mon Jan 30 18:15:53 2023"
+[dumpfile_size] 92284631
 [savefile] "/home/student/Rep_Projeto/iob-soc/hardware/simulation/PWM.gtkw"
 [timestart] 0
 [size] 1848 1016
-[pos] -101 -101
-*-16.173466 490680000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -51 -51
+*-27.691952 490680000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] system_tb.
 [treeopen] system_tb.system_top.
 [treeopen] system_tb.system_top.uut.
@@ -27,7 +27,14 @@ system_tb.system_top.uut.pwm0.freq_counter[15:0]
 system_tb.system_top.uut.pwm0.pwm_output
 @22
 system_tb.system_top.uut.pwm0.rom_r_rdata[15:0]
-@23
 system_tb.system_top.uut.pwm0.duty_cycle_converted_value[31:0]
+system_tb.system_top.uut.gpio0.GPIO_LED[15:0]
+system_tb.system_top.uut.gpio0.GPIO_SSEG_CA[7:0]
+system_tb.system_top.uut.gpio0.gpio_sw[15:0]
+system_tb.system_top.uut.gpio0.gpio_led[15:0]
+@23
+system_tb.system_top.uut.gpio0.gpio_sseg_an[7:0]
+@22
+system_tb.system_top.uut.gpio0.gpio_sseg_ca[7:0]
 [pattern_trace] 1
 [pattern_trace] 0

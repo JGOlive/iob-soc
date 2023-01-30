@@ -40,7 +40,7 @@ module system_tb;
 
   //cpu trap signal
   wire                    trap;
-
+ 
   initial begin
     //init cpu bus signals
     uart_valid = 0;
@@ -64,8 +64,7 @@ module system_tb;
     cpu_char = 0;
     rxread_reg = 0;
     txread_reg = 0;
-
-
+    
     soc2cnsl_fd = $fopen("soc2cnsl", "r+");
     while (!soc2cnsl_fd) begin
       $display("Could not open \"soc2cnsl\"");
