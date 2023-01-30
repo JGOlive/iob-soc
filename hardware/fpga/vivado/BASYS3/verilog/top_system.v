@@ -6,6 +6,7 @@ module top_system(
 	          input         reset,
 
 	          //uart
+	          output 	pwm_output,
 	          output        uart_txd,
 	          input         uart_rxd
 		  );
@@ -41,7 +42,8 @@ module top_system(
       .clk           (clk),
       .rst           (sys_rst),
       .trap          (trap),
-
+	//pwm
+	.pwm_output(pwm_output),
       //UART
       .uart_txd      (uart_txd),
       .uart_rxd      (uart_rxd),

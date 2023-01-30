@@ -7,6 +7,7 @@
 
 module system_top 
   (
+   output 				pwm_output,
    output                             trap,
    //tester uart
    input                              uart_valid,

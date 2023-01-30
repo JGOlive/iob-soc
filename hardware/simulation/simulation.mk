@@ -67,6 +67,7 @@ ifeq ($(VCD),1)
 endif
 
 sim:
+	cp ../../../submodules/PWM/hardware/src/sine.hex .
 ifeq ($(SIM_SERVER),)
 	cp $(FIRM_DIR)/firmware.bin .
 	@rm -f soc2cnsl cnsl2soc

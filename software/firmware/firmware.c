@@ -45,10 +45,13 @@ int main()
   //init uart
   uart_init(UART_BASE,FREQ/BAUD);
 
+  //init uart
+  pwm_init(PWM_BASE);
   //test puts
   uart_puts("\n\n\nHello world!\n\n\n");
 
-  pwm_set_period(128);  
-
+  pwm_set_period(20); 
+  
+  while(1);
   uart_finish();
 }
