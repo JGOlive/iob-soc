@@ -9,7 +9,6 @@ module top_system(
 	          output 	pwm_output,
 	          //gpio
    		  input [15:0] gpio_sw,
-   		  output [15:0] gpio_led,
    		  output [7:0] gpio_sseg_ca,
    		  output [3:0] gpio_sseg_an,
 	          //uart
@@ -48,13 +47,20 @@ module top_system(
       .clk           (clk),
       .rst           (sys_rst),
       .trap          (trap),
-	//pwm
-	.pwm_output(pwm_output),
+      
+      //PWM
+      .pwm_output(pwm_output),
+      
       //UART
       .uart_txd      (uart_txd),
       .uart_rxd      (uart_rxd),
       .uart_rts      (),
-      .uart_cts      (1'b1)
+      .uart_cts      (1'b1),
+      
+      //GPIO
+      .gpio_sw		(gpio_sw),
+      .gpio_sseg_ca	(gpio_sseg_ca),
+      .gpio_sseg_an	(gpio_sseg_an)
       );
 
 endmodule

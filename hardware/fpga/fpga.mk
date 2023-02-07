@@ -49,15 +49,17 @@ endif
 endif
 endif
 
-build: $(FPGA_OBJ)
+sine.hex:
+	cp ../../../../submodules/PWM/hardware/src/sine.hex .
 
+build:$(FPGA_OBJ) sine.hex
 #make the FPGA programming file either locally or remotely
 ifeq ($(INIT_MEM),1)
-$(FPGA_OBJ): $(wildcard *.sdc) $(VSRC) $(VHDR) boot.hex firmware.hex
+$(FPGA_OBJ): $(wildcard *.sdc) $(VSRC) $(VHDR) boot.hex firmware.hex sine.hex
 else ifeq ($(USE_DDR),1)
-$(FPGA_OBJ): $(wildcard *.sdc) $(VSRC) $(VHDR) boot.hex
+$(FPGA_OBJ): $(wildcard *.sdc) $(VSRC) $(VHDR) boot.hex sine.hex
 else
-$(FPGA_OBJ): $(wildcard *.sdc) $(VSRC) $(VHDR) boot.hex
+$(FPGA_OBJ): $(wildcard *.sdc) $(VSRC) $(VHDR) boot.hex sine.hex
 endif
 ifeq ($(NORUN),0)
 ifeq ($(FPGA_SERVER),)
@@ -71,7 +73,6 @@ else
 	scp $(FPGA_USER)@$(FPGA_SERVER):$(REMOTE_ROOT_DIR)/hardware/fpga/$(TOOL)/$(BOARD)/$(FPGA_LOG) .
 endif
 endif
-
 
 
 #

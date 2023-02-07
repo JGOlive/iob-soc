@@ -36,7 +36,7 @@ INIT_MEM ?=1
 #PERIPHERAL LIST
 #must match respective submodule CORE_NAME in the core.mk file of the submodule
 #PERIPHERALS:=UART
-PERIPHERALS ?=UART PWM GPIO
+PERIPHERALS ?=UART PWM GPIO TIMER
 
 #RISC-V HARD MULTIPLIER AND DIVIDER INSTRUCTIONS
 USE_MUL_DIV ?=1
@@ -90,7 +90,7 @@ MEM_DIR=$(ROOT_DIR)/submodules/MEM
 AXI_DIR=$(ROOT_DIR)/submodules/AXI
 PWM_DIR=$(ROOT_DIR)/submodules/PWM
 GPIO_DIR=$(ROOT_DIR)/submodules/GPIO
-
+TIMER_DIR=$(ROOT_DIR)/submodules/TIMER
 #sw paths
 SW_DIR:=$(ROOT_DIR)/software
 PC_DIR:=$(SW_DIR)/pc-emul

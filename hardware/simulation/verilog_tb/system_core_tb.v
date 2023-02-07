@@ -40,7 +40,7 @@ module system_tb;
 
   //cpu trap signal
   wire                    trap;
- 
+
   initial begin
     //init cpu bus signals
     uart_valid = 0;

@@ -6,40 +6,111 @@
 #include "iob-gpio.h"
 #include "iob-timer.h"
 
+#define DISPLAY_REFRESH_RATE 2
 
-uint8_t sseg_table[9] = {255, 121, 36, 48, 25, 18, 2, 120, 0, 16}; //esta em decimal. nao sei se é preciso ser hexa
-void display(uint16_t digits){
+uint8_t sseg_table[10] = {192, 249, 164, 176, 153, 146, 130, 248, 128, 144}; //esta em decimal. nao sei se é preciso ser hexa
+uint8_t sseg_table_point[10] = {64, 121, 36, 48, 25, 18, 2, 120, 0, 16}; //com ponto
+void display(uint32_t digits){
 
   uint8_t sseg_ca_value, digit_1, digit_2, digit_3, digit_4;
 
-  digit_1 = digits/1000;
-  digit_2 = digits/100 - (digits/1000)*1000;
-  digit_3 = digits/10 - (digits/100)*100 - (digits/1000)*1000 ;
-  digit_4 = digits - (digits/10)*10 - (digits/100)*100 - (digits/1000)*1000;
   
-  sseg_ca_value = sseg_table[digit_1];	
-  gpio_set_sseg_ca(sseg_ca_value); 
-  gpio_set_sseg_an(1);
-  timer_reset();
-  while(timer_time_ms()<=20);
+  if(digits <= 10000){
+	  digit_1 = digits/1000; 
+	  digit_2 = (digits%1000)/100;
+	  digit_3 = (digits%100)/10;
+	  digit_4 = (digits%10);
+	  
+	  sseg_ca_value = sseg_table[digit_1];	
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(7);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table[digit_2];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(11);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table[digit_3];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(13);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table[digit_4];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(14);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
   
-  sseg_ca_value = sseg_table[digit_2];
-  gpio_set_sseg_ca(sseg_ca_value); 
-  gpio_set_sseg_an(2);
-  timer_reset();
-  while(timer_time_ms()<=20);
+  }else if(digits >= 10000){
   
-  sseg_ca_value = sseg_table[digit_3];
-  gpio_set_sseg_ca(sseg_ca_value); 
-  gpio_set_sseg_an(4);
-  timer_reset();
-  while(timer_time_ms()<=20);
+	  digit_1 = digits/10000; 
+	  digit_2 = (digits%10000)/1000;
+	  digit_3 = (digits%1000)/100;
+	  digit_4 = (digits%100)/10;
+	  
+	  sseg_ca_value = sseg_table[digit_1];	
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(7);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table_point[digit_2];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(11);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table[digit_3];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(13);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table[digit_4];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(14);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
   
-  sseg_ca_value = sseg_table[digit_4];
-  gpio_set_sseg_ca(sseg_ca_value); 
-  gpio_set_sseg_an(8);
-  timer_reset();
-  while(timer_time_ms()<=20);
+  }else if(digits >= 100000){
+  	  uint32_t cem_mil = 10000;
+  	  cem_mil = cem_mil*10;	
+	  digit_1 = digits/cem_mil; 
+	  digit_2 = (digits%cem_mil)/10000;
+	  digit_3 = (digits%10000)/1000;
+	  digit_4 = (digits%1000)/100;
+	  
+	    sseg_ca_value = sseg_table[digit_1];	
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(7);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table[digit_2];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(11);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table_point[digit_3];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(13);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+	  
+	  sseg_ca_value = sseg_table[digit_4];
+	  gpio_set_sseg_ca(sseg_ca_value); 
+	  gpio_set_sseg_an(14);
+	  timer_reset();
+	  while(timer_time_ms()<=DISPLAY_REFRESH_RATE);
+  
+  }
+  
+  return;
   
 }
 
@@ -61,38 +132,27 @@ int main()
   //test puts
   uart_puts("\n\n\nHello world!\n\n\n");
   
-  pwm_set_period(128);
-  
-  uint16_t freq=256, buffer=100 , sw_value, period;
-  
+  uint32_t freq = 2861; // freq = ((190.7348633*sw_value)/10)*10;
+  uint16_t buffer = 0, sw_value = 15, period;
+
   while(1){
-  
-  	sw_value = gpio_sw_get();
-  
+  	
+  	if(gpio_sw_get()!=0 && gpio_sw_get()<=512)
+  		sw_value = gpio_sw_get();
+  	
   	if(buffer != sw_value){
   	
   		buffer = sw_value;
   		
-  		//freq = sw_value/16;
+  		freq = ((190.7348633*sw_value)/10)*10;
   		
-  		//period = (1024 - 2*freq);
+  		period = sw_value;
   		
-  		period = freq;
-  		
-  		pwm_set_period(128);
-  		
+  		pwm_set_period(period);
   	}
   	
-  	display(freq);
-  		
-  
-  gpio_set_sseg_ca(255);
-  
-  gpio_set_sseg_an(5);
-  
-  pwm_set_period(32);
-  
-  while(1);
+  	display(freq);	
   }
+  
   uart_finish();
 }
